@@ -1,0 +1,12 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Eshop client CMS",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "author": "Hendra Wijaya",
+  "license": "ISC"
+}
