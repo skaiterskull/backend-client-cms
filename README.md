@@ -20,3 +20,11 @@ All user api will follow the following endpoint `${rootUrl/api/v1/category}`
 | #   | API | METHOD | DESCRIPTION                               |
 | --- | --- | ------ | ----------------------------------------- |
 | 1   | `/` | GET    | Fetching all the data from category table |
+
+### Product API
+
+All user api will follow the following endpoint `${rootUrl/api/v1/category}`
+
+| #   | API       | METHOD | DESCRIPTION                                                           |
+| --- | --------- | ------ | --------------------------------------------------------------------- |
+| 1   | `/:catId` | GET    | Fetching all the data from category table based on parent category ID |
