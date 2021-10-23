@@ -1,2 +1,8 @@
 ### Read category
 GET http://localhost:8000/api/v2/category
+
+
+### Read product
+GET http://localhost:8000/api/v2/product/61526b1112ec817bb1a6cb5d
+
+

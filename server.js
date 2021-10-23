@@ -13,8 +13,10 @@ app.use(cors());
 app.use(morgan("tiny"));
 
 import categoryRouter from "./src/routers/categoryRouter.js";
+import productRouter from "./src/routers/productRouter.js";
 
 app.use("/api/v2/category", categoryRouter);
+app.use("/api/v2/product", productRouter);
 
 app.use("/", (req, res) => {
   res.send("You have reached the end of the router list");
