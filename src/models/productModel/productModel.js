@@ -1,5 +1,5 @@
 import ProductSchema from "./productSchema.js";
 
-export const getCategoryByFilter = (obj) => {
-  return ProductSchema.find(obj);
+export const getProductByFilter = (filter) => {
+  return ProductSchema.find(filter);
 };

@@ -23,8 +23,9 @@ All user api will follow the following endpoint `${rootUrl/api/v1/category}`
 
 ### Product API
 
-All user api will follow the following endpoint `${rootUrl/api/v1/category}`
+All user api will follow the following endpoint `${rootUrl/api/v1/product}`
 
-| #   | API       | METHOD | DESCRIPTION                                                           |
-| --- | --------- | ------ | --------------------------------------------------------------------- |
-| 1   | `/:catId` | GET    | Fetching all the data from category table based on parent category ID |
+| #   | API          | METHOD | DESCRIPTION                                                          |
+| --- | ------------ | ------ | -------------------------------------------------------------------- |
+| 1   | `/:category` | GET    | Fetching all the data from product table based on parent category ID |
+| 1   | `/get/:slug` | GET    | Fetching single product from product table based on product slug     |
