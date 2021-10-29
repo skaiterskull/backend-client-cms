@@ -14,7 +14,7 @@ Router.get("/", async (req, res) => {
     }
   } catch (error) {
     res.status(501).json({
-      status: "Error",
+      status: "error",
       message: error.message,
     });
   }
