@@ -34,6 +34,7 @@ All product api will follow the following endpoint `${rootUrl/api/v1/product}`
 
 All user api will follow the following endpoint `${rootUrl/api/v1/user}`
 
-| #   | API | METHOD | DESCRIPTION                         |
-| --- | --- | ------ | ----------------------------------- |
-| 1   | `/` | POST   | Adding new user to database as user |
+| #   | API                   | METHOD | DESCRIPTION                         |
+| --- | --------------------- | ------ | ----------------------------------- |
+| 1   | `/`                   | POST   | Adding new user to database as user |
+| 2   | `/email-verification` | POST   | Check the pin and email             |

@@ -1,10 +1,17 @@
 import express from "express";
-import { addUser } from "../models/userModel/userModel.js";
-import { newUserValidation } from "../middlewares/validationMiddleware.js";
+import { addUser, updateVerifiedUser } from "../models/userModel/userModel.js";
+import {
+  newUserValidation,
+  pinValidation,
+} from "../middlewares/validationMiddleware.js";
 import { hashPassword } from "../helpers/bcryptHelper.js";
 import { getRandomOTP } from "../helpers/otpHelper.js";
 import { createPin } from "../models/pinModel/pinModel.js";
-import { sendEmailVerificationLink } from "../helpers/nodemailerHelper.js";
+import {
+  sendEmailVerificationLink,
+  sendEmailVerificationSuccess,
+} from "../helpers/nodemailerHelper.js";
+import { checkPinAndDelete } from "../models/pinModel/pinModel.js";
 
 const Router = express.Router();
 
@@ -41,6 +48,31 @@ Router.post("/", newUserValidation, async (req, res) => {
     res.status(501).json({
       status: "error",
       message: "Internal server error",
+    });
+    console.log(error);
+  }
+});
+
+Router.post("/email-verification", pinValidation, async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    const result = await checkPinAndDelete(req.body);
+    if (result) {
+      await updateVerifiedUser({ email });
+      sendEmailVerificationSuccess(email);
+
+      return res.json({
+        status: "success",
+      });
+    }
+    res.status(404).json({
+      status: "error",
+      message: "Invalid Link.",
+    });
+  } catch (error) {
+    res.status(501).json({
+      status: "error",
     });
     console.log(error);
   }

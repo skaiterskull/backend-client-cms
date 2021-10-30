@@ -17,7 +17,7 @@ const send = async (mailInfo) => {
 };
 
 export const sendEmailVerificationLink = ({ email, otp }) => {
-  const link = `${process.env.CLIENT_ROOT_URL}/email-verification?otp=${otp}&email=${email}`;
+  const link = `${process.env.CLIENT_ROOT_URL}/verification?otp=${otp}&email=${email}`;
   const mailObj = {
     from: `E-shop 👻 <${process.env.EMAIL_USER}>`, // sender address
     to: email, // list of receivers
@@ -28,6 +28,26 @@ export const sendEmailVerificationLink = ({ email, otp }) => {
           <br/>
           <p>Thank you for register with us. Please verify your email</p>
           <p><a href=${link}>${link}</a></p>
+          <br/>
+          <p>Kind regards</p>
+          <br/>
+          <p>--Some company info</p>
+      `, // html body
+  };
+
+  send(mailObj);
+};
+
+export const sendEmailVerificationSuccess = (email) => {
+  const mailObj = {
+    from: `E-shop 👻 <${process.env.EMAIL_USER}>`, // sender address
+    to: email, // list of receivers
+    subject: "Verification Completed", // Subject line
+    text: `Congratulation, your account is now active.`, // plain text body
+    html: `
+          Hello there,
+          <br/>
+          <p>Congratulation, your account is now active.</p>
           <br/>
           <p>Kind regards</p>
           <br/>

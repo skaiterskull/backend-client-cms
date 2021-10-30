@@ -11,6 +11,15 @@ Content-Type: application/json
 {
     "fname": "Hendra",
     "lname": "Wijaya",
-    "email": "hendra10.here@yahoo.com",
+    "email": "hendra1.here@yahoo.com",
     "password": "aaaaaaaa"
+}
+
+### Check pin and delete pin
+POST http://localhost:5000/api/v2/user/email-verification
+Content-Type: application/json
+
+{
+    "otp": "432982",
+    "email": "hendra1.here@yahoo.com"
 }
