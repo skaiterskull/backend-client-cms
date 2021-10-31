@@ -11,7 +11,7 @@ Content-Type: application/json
 {
     "fname": "Hendra",
     "lname": "Wijaya",
-    "email": "hendra1.here@yahoo.com",
+    "email": "hendra2.here@yahoo.com",
     "password": "aaaaaaaa"
 }
 
@@ -22,4 +22,13 @@ Content-Type: application/json
 {
     "otp": "432982",
     "email": "hendra1.here@yahoo.com"
+}
+
+### Get user for login
+GET http://localhost:5000/api/v2/user
+Content-Type: application/json
+
+{
+    "email": "hendra2.here@yahoo.com",
+    "password": "aaaaaaasdsadaa"
 }

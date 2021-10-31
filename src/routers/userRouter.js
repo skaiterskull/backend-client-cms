@@ -1,10 +1,15 @@
 import express from "express";
-import { addUser, updateVerifiedUser } from "../models/userModel/userModel.js";
+import {
+  addUser,
+  updateVerifiedUser,
+  getUser,
+} from "../models/userModel/userModel.js";
 import {
   newUserValidation,
   pinValidation,
+  loginDataValidation,
 } from "../middlewares/validationMiddleware.js";
-import { hashPassword } from "../helpers/bcryptHelper.js";
+import { hashPassword, verifyPassword } from "../helpers/bcryptHelper.js";
 import { getRandomOTP } from "../helpers/otpHelper.js";
 import { createPin } from "../models/pinModel/pinModel.js";
 import {
@@ -14,6 +19,39 @@ import {
 import { checkPinAndDelete } from "../models/pinModel/pinModel.js";
 
 const Router = express.Router();
+
+Router.post("/login", loginDataValidation, async (req, res) => {
+  try {
+    s;
+    const { email, password } = req.body;
+    const result = await getUser({ email });
+    if (result) {
+      const isVerified = verifyPassword(password, result.password);
+      if (isVerified) {
+        return res.json({
+          status: "success",
+          message: "Login successfullly.",
+        });
+      } else {
+        return res.json({
+          status: "error",
+          message: "Incorrect Password !",
+        });
+      }
+    }
+
+    return res.json({
+      status: "error",
+      message: "Account is not exist.",
+    });
+  } catch (error) {
+    res.status(501).json({
+      status: "error",
+      message: "Internal server error.",
+    });
+    console.log(error);
+  }
+});
 
 Router.post("/", newUserValidation, async (req, res) => {
   try {

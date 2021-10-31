@@ -12,3 +12,7 @@ export const updateVerifiedUser = (email) => {
     },
   });
 };
+
+export const getUser = (filter) => {
+  return UserSchema.findOne(filter);
+};
