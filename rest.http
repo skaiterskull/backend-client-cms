@@ -25,10 +25,13 @@ Content-Type: application/json
 }
 
 ### Get user for login
-GET http://localhost:5000/api/v2/user
+POST http://localhost:5000/api/v2/user/login
 Content-Type: application/json
 
 {
     "email": "hendra2.here@yahoo.com",
-    "password": "aaaaaaasdsadaa"
+    "password": "aaaaaaasda"
 }
+
+### FInd user by email
+GET http://localhost:5000/api/v2/user/hendra.here@yahoo.com

@@ -55,3 +55,19 @@ export const loginDataValidation = (req, res, next) => {
 
   next();
 };
+
+export const resetPassDataValidation = (req, res, next) => {
+  const schema = Joi.object({
+    email: Joi.string().email({ minDomainSegments: 2 }),
+  });
+
+  const result = schema.validate(req.params);
+
+  if (result.error) {
+    return res.json({
+      status: "ok",
+    });
+  }
+
+  next();
+};

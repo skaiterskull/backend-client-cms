@@ -8,6 +8,7 @@ import {
   newUserValidation,
   pinValidation,
   loginDataValidation,
+  resetPassDataValidation,
 } from "../middlewares/validationMiddleware.js";
 import { hashPassword, verifyPassword } from "../helpers/bcryptHelper.js";
 import { getRandomOTP } from "../helpers/otpHelper.js";
@@ -15,39 +16,26 @@ import { createPin } from "../models/pinModel/pinModel.js";
 import {
   sendEmailVerificationLink,
   sendEmailVerificationSuccess,
+  sendEmailResetPassLink,
 } from "../helpers/nodemailerHelper.js";
 import { checkPinAndDelete } from "../models/pinModel/pinModel.js";
 
 const Router = express.Router();
 
-Router.post("/login", loginDataValidation, async (req, res) => {
+Router.get("/:email", resetPassDataValidation, async (req, res) => {
   try {
-    s;
-    const { email, password } = req.body;
+    const { email } = req.params;
     const result = await getUser({ email });
     if (result) {
-      const isVerified = verifyPassword(password, result.password);
-      if (isVerified) {
-        return res.json({
-          status: "success",
-          message: "Login successfullly.",
-        });
-      } else {
-        return res.json({
-          status: "error",
-          message: "Incorrect Password !",
-        });
-      }
+      const otp = getRandomOTP(15);
+      sendEmailResetPassLink({ email, otp });
     }
-
-    return res.json({
-      status: "error",
-      message: "Account is not exist.",
+    res.json({
+      status: "ok",
     });
   } catch (error) {
     res.status(501).json({
       status: "error",
-      message: "Internal server error.",
     });
     console.log(error);
   }
@@ -86,6 +74,38 @@ Router.post("/", newUserValidation, async (req, res) => {
     res.status(501).json({
       status: "error",
       message: "Internal server error",
+    });
+    console.log(error);
+  }
+});
+
+Router.post("/login", loginDataValidation, async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const result = await getUser({ email });
+    if (result) {
+      const isVerified = verifyPassword(password, result.password);
+      if (isVerified) {
+        return res.json({
+          status: "success",
+          message: "Login successfullly.",
+        });
+      } else {
+        return res.json({
+          status: "error",
+          message: "Incorrect Password !",
+        });
+      }
+    }
+
+    return res.json({
+      status: "error",
+      message: "Account is not exist.",
+    });
+  } catch (error) {
+    res.status(501).json({
+      status: "error",
+      message: "Internal server error.",
     });
     console.log(error);
   }
