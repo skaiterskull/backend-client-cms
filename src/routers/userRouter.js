@@ -3,22 +3,25 @@ import {
   addUser,
   updateVerifiedUser,
   getUser,
+  updateUserByFilter,
 } from "../models/userModel/userModel.js";
 import {
   newUserValidation,
   pinValidation,
   loginDataValidation,
   resetPassDataValidation,
+  updateUserPasswordValidation,
 } from "../middlewares/validationMiddleware.js";
 import { hashPassword, verifyPassword } from "../helpers/bcryptHelper.js";
 import { getRandomOTP } from "../helpers/otpHelper.js";
-import { createPin } from "../models/pinModel/pinModel.js";
+import { createPin, deletePin } from "../models/pinModel/pinModel.js";
 import {
   sendEmailVerificationLink,
   sendEmailVerificationSuccess,
   sendEmailResetPassLink,
+  sendEmailUpdatePassSuccess,
 } from "../helpers/nodemailerHelper.js";
-import { checkPinAndDelete } from "../models/pinModel/pinModel.js";
+import { checkPinAndDelete, checkPin } from "../models/pinModel/pinModel.js";
 
 const Router = express.Router();
 
@@ -28,7 +31,10 @@ Router.get("/:email", resetPassDataValidation, async (req, res) => {
     const result = await getUser({ email });
     if (result) {
       const otp = getRandomOTP(15);
-      sendEmailResetPassLink({ email, otp });
+      const result = await createPin({ email, otp });
+      if (result) {
+        sendEmailResetPassLink({ email, otp });
+      }
     }
     res.json({
       status: "ok",
@@ -125,6 +131,38 @@ Router.post("/email-verification", pinValidation, async (req, res) => {
       });
     }
     res.status(404).json({
+      status: "error",
+      message: "Invalid Link.",
+    });
+  } catch (error) {
+    res.status(501).json({
+      status: "error",
+    });
+    console.log(error);
+  }
+});
+
+Router.put("/", updateUserPasswordValidation, async (req, res) => {
+  try {
+    const { otp, email, password } = req.body;
+    const data = await checkPin({ email, otp });
+
+    if (data) {
+      const encryptedPass = hashPassword(password);
+      const result = await updateUserByFilter(
+        { email },
+        { password: encryptedPass }
+      );
+      if (result) {
+        await deletePin({ email, otp });
+        sendEmailUpdatePassSuccess(email);
+        return res.json({
+          status: "success",
+          message: "Password has been updated.",
+        });
+      }
+    }
+    res.json({
       status: "error",
       message: "Invalid Link.",
     });

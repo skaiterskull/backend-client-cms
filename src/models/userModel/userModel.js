@@ -13,6 +13,10 @@ export const updateVerifiedUser = (email) => {
   });
 };
 
+export const updateUserByFilter = (filter, toUpdate) => {
+  return UserSchema.findOneAndUpdate(filter, toUpdate);
+};
+
 export const getUser = (filter) => {
   return UserSchema.findOne(filter);
 };

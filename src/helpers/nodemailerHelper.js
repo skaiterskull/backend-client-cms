@@ -58,6 +58,26 @@ export const sendEmailVerificationSuccess = (email) => {
   send(mailObj);
 };
 
+export const sendEmailUpdatePassSuccess = (email) => {
+  const mailObj = {
+    from: `E-shop 👻 <${process.env.EMAIL_USER}>`, // sender address
+    to: email, // list of receivers
+    subject: "Verification Completed", // Subject line
+    text: `Congratulation, your password has been updated.`, // plain text body
+    html: `
+          Hello there,
+          <br/>
+          <p>Congratulation, your password has been updated.</p>
+          <br/>
+          <p>Kind regards</p>
+          <br/>
+          <p>--Some company info</p>
+      `, // html body
+  };
+
+  send(mailObj);
+};
+
 export const sendEmailResetPassLink = ({ email, otp }) => {
   const link = `${process.env.CLIENT_ROOT_URL}/update-password?otp=${otp}&email=${email}`;
   const mailObj = {

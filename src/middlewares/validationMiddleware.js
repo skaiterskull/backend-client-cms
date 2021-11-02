@@ -71,3 +71,22 @@ export const resetPassDataValidation = (req, res, next) => {
 
   next();
 };
+
+export const updateUserPasswordValidation = (req, res, next) => {
+  const schema = Joi.object({
+    otp: Joi.string().max(15).min(15).required(),
+    email: Joi.string().email({ minDomainSegments: 2 }),
+    password: Joi.string().min(8).max(30).required(),
+  });
+
+  const result = schema.validate(req.body);
+
+  if (result.error) {
+    return res.status(404).json({
+      status: "error",
+      message: "Invalid Data",
+    });
+  }
+
+  next();
+};

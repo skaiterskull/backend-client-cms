@@ -15,7 +15,7 @@ All the api will follow the following path `${rootUrl/api/v2}` ie. http://localh
 
 ### Category API
 
-All category api will follow the following endpoint `${rootUrl/api/v1/category}`
+All category api will follow the following endpoint `${rootUrl/api/v2/category}`
 
 | #   | API | METHOD | DESCRIPTION                               |
 | --- | --- | ------ | ----------------------------------------- |
@@ -23,7 +23,7 @@ All category api will follow the following endpoint `${rootUrl/api/v1/category}`
 
 ### Product API
 
-All product api will follow the following endpoint `${rootUrl/api/v1/product}`
+All product api will follow the following endpoint `${rootUrl/api/v2/product}`
 
 | #   | API          | METHOD | DESCRIPTION                                                          |
 | --- | ------------ | ------ | -------------------------------------------------------------------- |
@@ -32,11 +32,12 @@ All product api will follow the following endpoint `${rootUrl/api/v1/product}`
 
 ### User API
 
-All user api will follow the following endpoint `${rootUrl/api/v1/user}`
+All user api will follow the following endpoint `${rootUrl/api/v2/user}`
 
-| #   | API                   | METHOD | DESCRIPTION                                    |
-| --- | --------------------- | ------ | ---------------------------------------------- |
-| 1   | `/`                   | POST   | Adding new user to database as user            |
-| 2   | `/email-verification` | POST   | Check the pin and email                        |
-| 3   | `/login`              | POST   | Check the email and password for login purpose |
-| 4   | `/:email`             | GET    | Find user by email                             |
+| #   | API                   | METHOD | DESCRIPTION                                                  |
+| --- | --------------------- | ------ | ------------------------------------------------------------ |
+| 1   | `/`                   | POST   | Adding new user to database as user                          |
+| 2   | `/email-verification` | POST   | Check the pin and email                                      |
+| 3   | `/login`              | POST   | Check the email and password for login purpose               |
+| 4   | `/:email`             | GET    | Find user by email                                           |
+| 5   | `/`                   | PUT    | Expect email, opt, new password for update password purpose. |

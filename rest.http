@@ -1,8 +1,12 @@
 ### Read category
 GET http://localhost:5000/api/v2/category
 
+## --------------------------------------------------------------------------------- ##
+
 ### Read product
 GET http://localhost:5000/api/v2/product/61526b1112ec817bb1a6cb5d
+
+## --------------------------------------------------------------------------------- ##
 
 ### Add user
 POST http://localhost:5000/api/v2/user
@@ -30,8 +34,21 @@ Content-Type: application/json
 
 {
     "email": "hendra2.here@yahoo.com",
-    "password": "aaaaaaasda"
+    "password": "hendra1234"
 }
 
-### FInd user by email
-GET http://localhost:5000/api/v2/user/hendra.here@yahoo.com
+### FInd user by email for reset password purpose
+GET http://localhost:5000/api/v2/user/hendra2.here@yahoo.com
+
+### Update user password
+PUT http://localhost:5000/api/v2/user
+Content-Type: application/json
+
+{
+    "email": "hendra2.here@yahoo.com",
+    "otp" : "256603232202848",
+    "password" : "hendra1234"
+}
+
+## --------------------------------------------------------------------------------- ##
+

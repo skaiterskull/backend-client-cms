@@ -7,3 +7,11 @@ export const createPin = (obj) => {
 export const checkPinAndDelete = (filter) => {
   return PinSchema.findOneAndDelete(filter);
 };
+
+export const checkPin = (filter) => {
+  return PinSchema.findOne(filter);
+};
+
+export const deletePin = (filter) => {
+  return PinSchema.deleteOne(filter);
+};
