@@ -1,5 +1,6 @@
 ### Read category
 GET http://localhost:5000/api/v2/category
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbmRyYTIuaGVyZUB5YWhvby5jb20iLCJpYXQiOjE2MzU5MDAwMDEsImV4cCI6MTYzNTkwMDkwMX0.HqtODEoSPatrjuywGjHzZFlYD_kD-8u5t3CAASel1AE
 
 ## --------------------------------------------------------------------------------- ##
 
@@ -34,7 +35,7 @@ Content-Type: application/json
 
 {
     "email": "hendra2.here@yahoo.com",
-    "password": "hendra1234"
+    "password": "aaaaaaaa"
 }
 
 ### FInd user by email for reset password purpose

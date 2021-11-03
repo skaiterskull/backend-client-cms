@@ -22,6 +22,7 @@ import {
   sendEmailUpdatePassSuccess,
 } from "../helpers/nodemailerHelper.js";
 import { checkPinAndDelete, checkPin } from "../models/pinModel/pinModel.js";
+import { getJwts } from "../helpers/jwtHelper.js";
 
 const Router = express.Router();
 
@@ -89,12 +90,27 @@ Router.post("/login", loginDataValidation, async (req, res) => {
   try {
     const { email, password } = req.body;
     const result = await getUser({ email });
-    if (result) {
+    if (result?._id) {
       const isVerified = verifyPassword(password, result.password);
       if (isVerified) {
+        const obj = {
+          _id: result._id,
+          email,
+        };
+        const token = await getJwts(obj);
+
+        result.password = undefined;
+        result.__v = undefined;
+        result.role = undefined;
+        result.refreshJWT = undefined;
+        result.updatedAt = undefined;
+        result.isEmailConfirmed = undefined;
+
         return res.json({
           status: "success",
-          message: "Login successfullly.",
+          message: "Login successfully.",
+          result,
+          token,
         });
       } else {
         return res.json({
