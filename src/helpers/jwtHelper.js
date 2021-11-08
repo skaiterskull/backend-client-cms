@@ -39,3 +39,11 @@ export const verifyAccessJwt = (token) => {
     return error.message;
   }
 };
+
+export const verifyRefreshJwt = (token) => {
+  try {
+    return jwt.verify(token, process.env.SECRET_REFRESH_JWT);
+  } catch (error) {
+    return error.message;
+  }
+};

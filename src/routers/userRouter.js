@@ -23,8 +23,25 @@ import {
 } from "../helpers/nodemailerHelper.js";
 import { checkPinAndDelete, checkPin } from "../models/pinModel/pinModel.js";
 import { getJwts } from "../helpers/jwtHelper.js";
+import { userAuth } from "../middlewares/authenticationMiddleware.js";
 
 const Router = express.Router();
+
+Router.get("/", userAuth, async (req, res) => {
+  try {
+    req.user.password = undefined;
+    req.user.refreshJWT = undefined;
+    res.json({
+      status: "success",
+      result: req.user,
+    });
+  } catch (error) {
+    res.status(501).json({
+      status: "error",
+    });
+    console.log(error);
+  }
+});
 
 Router.get("/:email", resetPassDataValidation, async (req, res) => {
   try {
@@ -99,17 +116,9 @@ Router.post("/login", loginDataValidation, async (req, res) => {
         };
         const token = await getJwts(obj);
 
-        result.password = undefined;
-        result.__v = undefined;
-        result.role = undefined;
-        result.refreshJWT = undefined;
-        result.updatedAt = undefined;
-        result.isEmailConfirmed = undefined;
-
         return res.json({
           status: "success",
           message: "Login successfully.",
-          result,
           token,
         });
       } else {

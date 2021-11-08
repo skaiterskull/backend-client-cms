@@ -51,5 +51,14 @@ Content-Type: application/json
     "password" : "hendra1234"
 }
 
+### FInd user by token
+GET http://localhost:5000/api/v2/user
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbmRyYTIuaGVyZUB5YWhvby5jb20iLCJpYXQiOjE2MzYzNDkyNDcsImV4cCI6MTYzNjM1MDE0N30.m4mumK1RaYibrClZs9rJJOJs2FxBXHO0oi6lsSY7Uj8
+
 ## --------------------------------------------------------------------------------- ##
+
+### Request new access token 
+
+GET http://localhost:5000/api/v2/session
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbmRyYTIuaGVyZUB5YWhvby5jb20iLCJpYXQiOjE2MzYzNTAzMTUsImV4cCI6MTYzODk0MjMxNX0.Bl_XHISuNlR1rZwvUvwirAcYl4qTzVTpF9A6_lE8yQk
 

@@ -17,11 +17,13 @@ app.use(express.json());
 import categoryRouter from "./src/routers/categoryRouter.js";
 import productRouter from "./src/routers/productRouter.js";
 import userRouter from "./src/routers/userRouter.js";
+import sessionRouter from "./src/routers/sessionRouter.js";
 import { userAuth } from "./src/middlewares/authenticationMiddleware.js";
 
 app.use("/api/v2/category", categoryRouter);
 app.use("/api/v2/product", productRouter);
 app.use("/api/v2/user", userRouter);
+app.use("/api/v2/session", sessionRouter);
 
 app.use("/", (req, res) => {
   res.send("You have reached the end of the router list");
