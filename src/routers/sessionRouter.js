@@ -9,7 +9,6 @@ export default Router;
 Router.get("/", async (req, res) => {
   try {
     const { authorization } = req.headers;
-    console.log(authorization);
     const isJwtValid = verifyRefreshJwt(authorization);
 
     if (isJwtValid?.email) {

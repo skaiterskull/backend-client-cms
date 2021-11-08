@@ -25,23 +25,23 @@ All category api will follow the following endpoint `${rootUrl/api/v2/category}`
 
 All product api will follow the following endpoint `${rootUrl/api/v2/product}`
 
-| #   | API          | METHOD | DESCRIPTION                                                          |
-| --- | ------------ | ------ | -------------------------------------------------------------------- |
-| 1   | `/:category` | GET    | Fetching all the data from product table based on parent category ID |
-| 2   | `/get/:slug` | GET    | Fetching single product from product table based on product slug     |
+| #   | API          | METHOD | DESCRIPTION                                                               |
+| --- | ------------ | ------ | ------------------------------------------------------------------------- |
+| 1   | `/:category` | GET    | Expect the category slug as params to fetch all product in that category  |
+| 2   | `/get/:slug` | GET    | Expect a product slug as params to fetch single product based on the slug |
 
 ### User API
 
 All user api will follow the following endpoint `${rootUrl/api/v2/user}`
 
-| #   | API                   | METHOD | DESCRIPTION                                                  |
-| --- | --------------------- | ------ | ------------------------------------------------------------ |
-| 1   | `/`                   | POST   | Adding new user to database as user                          |
-| 2   | `/email-verification` | POST   | Check the pin and email                                      |
-| 3   | `/login`              | POST   | Check the email and password for login purpose               |
-| 4   | `/`                   | GET    | Expect token as header authorizarion, return user info       |
-| 5   | `/:email`             | GET    | Find user by email                                           |
-| 6   | `/`                   | PUT    | Expect email, opt, new password for update password purpose. |
+| #   | API                   | METHOD | DESCRIPTION                                                                                           |
+| --- | --------------------- | ------ | ----------------------------------------------------------------------------------------------------- |
+| 1   | `/`                   | POST   | Expect a userInfo object and save it in database                                                      |
+| 2   | `/email-verification` | POST   | Expect pin and email as an object to verify the account                                               |
+| 3   | `/login`              | POST   | Expect the email and password as an object for log in purpose                                         |
+| 4   | `/`                   | GET    | Expect accessJWT token as header authorization and return an user info linked to the accessJWT token. |
+| 5   | `/:email`             | GET    | Expect email as params and find the user based on that.                                               |
+| 6   | `/`                   | PUT    | Expect email, opt, new password as an object for update password purpose.                             |
 
 ### Session API
 
