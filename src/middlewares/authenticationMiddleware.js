@@ -25,7 +25,6 @@ export const userAuth = async (req, res, next) => {
 
         if (session?._id) {
           const user = await getUserById(session.userId);
-          console.log(user);
           if (user?.role === "user") {
             req.user = user;
             return next();

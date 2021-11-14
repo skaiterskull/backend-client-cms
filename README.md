@@ -50,3 +50,11 @@ All user api will follow the following endpoint `${rootUrl/api/v2/session}`
 | #   | API | METHOD | DESCRIPTION                                                              |
 | --- | --- | ------ | ------------------------------------------------------------------------ |
 | 1   | `/` | GET    | Expect refresh JWT as header authorization and return a new access token |
+
+### Payment Options API
+
+All user api will follow the following endpoint `${rootUrl/api/v2/paymentOpt}`
+
+| #   | API | METHOD | DESCRIPTION                                                                                        |
+| --- | --- | ------ | -------------------------------------------------------------------------------------------------- |
+| 1   | `/` | GET    | Fetching all the data from payment options table, this is private api, auhtorization header needed |

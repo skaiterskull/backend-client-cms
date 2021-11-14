@@ -62,3 +62,9 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbmRyYTIuaGVy
 GET http://localhost:5000/api/v2/session
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbmRyYTIuaGVyZUB5YWhvby5jb20iLCJpYXQiOjE2MzYzNTAzMTUsImV4cCI6MTYzODk0MjMxNX0.Bl_XHISuNlR1rZwvUvwirAcYl4qTzVTpF9A6_lE8yQk
 
+## --------------------------------------------------------------------------------- ##
+
+### Fetch all the payment options
+
+GET http://localhost:5000/api/v2/paymentOpt
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbmRyYTIuaGVyZUB5YWhvby5jb20iLCJpYXQiOjE2MzY0OTc3NzUsImV4cCI6MTYzNjQ5ODY3NX0.wgFIJT2B2c4MS7vn5WA_FSUx5p-7OuXJevvAQBLTa5k
