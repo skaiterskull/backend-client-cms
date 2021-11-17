@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const OrderSchema = mongoose.Schema(
   {
     userDetails: {
-      userId: {
+      _id: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         default: "",
@@ -34,7 +34,7 @@ const OrderSchema = mongoose.Schema(
     },
     cartDetails: [
       {
-        productId: {
+        _id: {
           type: mongoose.Schema.Types.ObjectId,
           required: true,
           default: "",
@@ -73,7 +73,7 @@ const OrderSchema = mongoose.Schema(
       method: {
         type: String,
         required: true,
-        maxLength: 10,
+        maxLength: 50,
       },
       transactionId: {
         type: String,
