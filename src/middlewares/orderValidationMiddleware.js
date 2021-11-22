@@ -19,8 +19,8 @@ export const orderValidation = (req, res, next) => {
     }),
     paymentDetails: {
       method: Joi.string().max(120).required(),
-      transactionId: Joi.string().max(120).required(),
-      status: Joi.string().alphanum().max(30).required(),
+      transactionId: Joi.string().max(120).allow(""),
+      status: Joi.string().alphanum().max(30),
       totalPaid: Joi.number().max(10000).required(),
     },
     invoiceDetails: {
@@ -42,9 +42,10 @@ export const orderValidation = (req, res, next) => {
   const result = schema.validate(req.body);
 
   if (result.error) {
+    console.log(result.error.message);
     return res.status(422).json({
       status: "error",
-      message: result.error.message,
+      message: "Data is not valid",
     });
   }
 
