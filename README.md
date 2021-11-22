@@ -58,3 +58,11 @@ All user api will follow the following endpoint `${rootUrl/api/v2/paymentOpt}`
 | #   | API | METHOD | DESCRIPTION                                                                                        |
 | --- | --- | ------ | -------------------------------------------------------------------------------------------------- |
 | 1   | `/` | GET    | Fetching all the data from payment options table, this is private api, auhtorization header needed |
+
+### Order API
+
+All user api will follow the following endpoint `${rootUrl/api/v2/order}`
+
+| #   | API | METHOD | DESCRIPTION                                                                        |
+| --- | --- | ------ | ---------------------------------------------------------------------------------- |
+| 1   | `/` | POST   | Expects a huge object of the information related to order and save it to database. |

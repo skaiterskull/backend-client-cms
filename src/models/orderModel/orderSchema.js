@@ -43,25 +43,23 @@ const OrderSchema = mongoose.Schema(
         title: {
           type: String,
           maxLength: 100,
-          require: true,
+          required: true,
         },
         slug: {
           type: String,
           maxLength: 120,
           default: "",
-          require: true,
-          unique: true,
-          index: 1,
+          required: true,
         },
         price: {
           type: Number,
-          maxLength: 120,
-          require: true,
+          maxLength: 10000,
+          required: true,
         },
         qty: {
           type: Number,
-          max: 10000,
-          require: true,
+          max: 100,
+          required: true,
         },
         images: {
           type: String,

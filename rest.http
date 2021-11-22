@@ -67,7 +67,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbmRyYTIuaGVy
 ### Fetch all the payment options
 
 GET http://localhost:5000/api/v2/paymentOpt
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbmRyYTIuaGVyZUB5YWhvby5jb20iLCJpYXQiOjE2MzY0OTc3NzUsImV4cCI6MTYzNjQ5ODY3NX0.wgFIJT2B2c4MS7vn5WA_FSUx5p-7OuXJevvAQBLTa5k
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbmRyYTIuaGVyZUB5YWhvby5jb20iLCJpYXQiOjE2Mzc2MjMyMDEsImV4cCI6MTYzNzYyNDEwMX0.SpxIG5WPA2SOGL3kTM_a_UPAx4T34EvnIOyY9I0rS_0
 
 
 ## -------------------------------------------------------------------------------- ##
@@ -76,17 +76,17 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbmRyYTIuaGVy
 
 POST http://localhost:5000/api/v2/order
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbmRyYTIuaGVyZUB5YWhvby5jb20iLCJpYXQiOjE2MzcxMDY0NTUsImV4cCI6MTYzNzEwNzM1NX0.MzK_QuLJa3IP_AP2Vsq1WmHvS7xeMNPmgvnCFXH9XAw
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbmRyYTIuaGVyZUB5YWhvby5jb20iLCJpYXQiOjE2Mzc2MjMyMDEsImV4cCI6MTYzNzYyNDEwMX0.SpxIG5WPA2SOGL3kTM_a_UPAx4T34EvnIOyY9I0rS_0
 
 {
 "shippingAddressDetails": {
     "city": "dasdsa",
-    "fname": "Wolli Creek",
+    "fname": "Hendra",
     "lname": "Wijaya",
-    "postalCode": "dsadas",
+    "postalCode": "dsas",
     "state": "dasdas", 
     "street": "2a WILLIS STREET",
-    "unit": "dasdas"
+    "unit": "dadas"
 },
 
 "cartDetails" : [
@@ -125,7 +125,8 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbmRyYTIuaGVy
 "paymentDetails": {
     "method": "Pay by Bank ID",
     "totalPaid": 0,
-    "transactionId": ""
+    "transactionId": "00000001",
+    "status": "pending"
 },
 
 "userDetails": {
