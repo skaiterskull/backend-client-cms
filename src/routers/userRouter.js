@@ -199,4 +199,31 @@ Router.put("/", updateUserPasswordValidation, async (req, res) => {
   }
 });
 
+Router.patch("/", userAuth, async (req, res) => {
+  try {
+    const { email, ...toUpdate } = req.body;
+    const result = await updateUserByFilter({ email }, toUpdate);
+    if (result._id) {
+      result.password = undefined;
+      result.isEmailConfirmed = undefined;
+      result.refreshJWT = undefined;
+      return res.json({
+        status: "success",
+        message: "Your profile has been successfully updated.",
+        result,
+      });
+    }
+    res.json({
+      status: "error",
+      message:
+        "Failed, unable to update your profile, Please contact administrator.",
+    });
+  } catch (error) {
+    res.status(501).json({
+      status: "error",
+    });
+    console.log(error);
+  }
+});
+
 export default Router;

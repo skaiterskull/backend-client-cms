@@ -18,7 +18,7 @@ export const updateVerifiedUser = (email) => {
 };
 
 export const updateUserByFilter = (filter, toUpdate) => {
-  return UserSchema.findOneAndUpdate(filter, toUpdate);
+  return UserSchema.findOneAndUpdate(filter, toUpdate, { new: true });
 };
 
 export const getUser = (filter) => {
