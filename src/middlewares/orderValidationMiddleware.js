@@ -16,6 +16,7 @@ export const orderValidation = (req, res, next) => {
       price: Joi.number().max(10000).required(),
       qty: Joi.number().max(100).required(),
       images: Joi.string().max(100),
+      category: Joi.string().max(30),
     }),
     paymentDetails: {
       method: Joi.string().max(120).required(),
@@ -46,6 +47,23 @@ export const orderValidation = (req, res, next) => {
     return res.status(422).json({
       status: "error",
       message: "Data is not valid",
+    });
+  }
+
+  next();
+};
+
+export const fetchOrderValidation = (req, res, next) => {
+  const schema = Joi.object({
+    email: Joi.string().email({ minDomainSegments: 2 }),
+  });
+
+  const result = schema.validate(req.params);
+
+  if (result.error) {
+    return res.status(404).json({
+      status: "error",
+      message: "Invalid Data",
     });
   }
 

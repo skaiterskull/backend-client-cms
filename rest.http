@@ -137,3 +137,10 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbmRyYTIuaGVy
     "_id": "617f1b59144008514ae190e3"
 }
 }
+
+## ------------------------------------------------------------------------------ ##
+
+### Get order by id ### 
+
+GET http://localhost:5000/api/v2/order/hendra2.here@yahoo.com
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbmRyYTIuaGVyZUB5YWhvby5jb20iLCJpYXQiOjE2NDE2MjE2MDYsImV4cCI6MTY0MTYyMjUwNn0.pwZNkN1wRjKoEI09fELU4FnkdxpWhFRVmWj6s-fzlws

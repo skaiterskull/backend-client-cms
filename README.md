@@ -63,6 +63,7 @@ All user api will follow the following endpoint `${rootUrl/api/v2/paymentOpt}`
 
 All user api will follow the following endpoint `${rootUrl/api/v2/order}`
 
-| #   | API | METHOD | DESCRIPTION                                                                        |
-| --- | --- | ------ | ---------------------------------------------------------------------------------- |
-| 1   | `/` | POST   | Expects a huge object of the information related to order and save it to database. |
+| #   | API       | METHOD | DESCRIPTION                                                                        |
+| --- | --------- | ------ | ---------------------------------------------------------------------------------- |
+| 1   | `/`       | POST   | Expects a huge object of the information related to order and save it to database. |
+| 2   | `/:email` | GET    | Expects an email and returning the orders related to the email                     |

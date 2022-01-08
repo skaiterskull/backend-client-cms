@@ -65,6 +65,11 @@ const OrderSchema = mongoose.Schema(
           type: String,
           default: null,
         },
+        category: {
+          type: String,
+          max: 30,
+          required: true,
+        },
       },
     ],
     paymentDetails: {
